@@ -1,0 +1,14 @@
+# This is a test file
+# for printing "Hello World" to the console.
+
+global _start
+
+lcl msg "Hello World"
+
+_start:
+
+mov r1 2
+mov r5 msg
+syscall
+
+end # _start

@@ -1,0 +1,22 @@
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa¦
+
+What was in this file that was used in gdb is above.
+
+The password is: cmsc313
+I found the password using "readelf -x .rodata rfa"
+
+The command that created it (buffer overflow command):
+python2 -c 'print("a")*(29*4) + "\xa6\x91\x04\x08"' > test1.txt
+We need to overflow 116 bytes in the stack in order to get to the return address
+to overflow.
+
+I used the following memory addresses to get to the secret function:
+
+0x08049253 - The return address in startup that is used as the initial breakpoint set in gdb.
+
+0x080491a6 - The address of the secret function that I implanted into the stack to override
+the return address. This will make it so once the function returns to main, it will redirect
+to the secret function.
+
+0x080492a1 - This is the address found in the stack once at the breakpoint above,
+it is the return address we need to override to get to the secret function.

@@ -1,0 +1,8 @@
+glb _start
+
+lcl var, 10
+
+# test comment
+
+_start:
+mov rax, 1 # test comment

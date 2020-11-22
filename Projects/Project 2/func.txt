@@ -1,0 +1,55 @@
+# func.txt
+# Call a function within the program to do a specialized task
+
+global _start
+
+lcl info "This program calls a specialized function."+
+lcl callingSpecial "Calling special function..."
+lcl back "Returned from special function."
+lcl jumped "Jumped to another label."
+lcl guessMsg "Guess the number I'm thinking of! (1-10)"
+lcl guess ""
+lcl cannotSee "This is not supposed to print since we jumped."
+lcl wrong "Incorrect. Try again later!"
+lcl right "You got it!"
+
+_start:
+
+mov r1 2
+mov r5 info
+syscall
+
+mov r1 2
+mov r5 callingSpecial
+syscall
+
+call special
+
+mov r1 2
+mov r5 back
+syscall
+
+jmp jumpTo
+
+# since we jumped, we are not supposed to see this.
+mov r1 2
+mov r5 cannotSee
+syscall
+
+end
+
+jumpTo:
+
+mov r1 2
+mov r5 jumped
+syscall
+
+end
+
+special:
+
+mov r1 2
+mov r5 right
+syscall
+
+end

@@ -1,0 +1,58 @@
+# math.txt
+# A simple program that does math
+
+global _start
+
+lcl firstMsg "Enter first number"
+lcl secondMsg "Enter second number"
+lcl addedMsg "Here's your numbers added"
+lcl subbedMsg "Here's your numbers subtraced"
+lcl inputOne ""
+lcl inputTwo ""
+lcl result ""
+
+_start:
+
+mov r1 2
+mov r5 firstMsg
+syscall
+
+mov r1 1
+mov r10 inputOne
+syscall
+
+mov r1 2
+mov r5 secondMsg
+syscall
+
+mov r1 1
+mov r10 inputTwo
+syscall
+
+mov r2 inputOne
+mov r3 inputTwo
+add
+mov result r2
+
+mov r1 2
+mov r5 addedMsg
+syscall
+
+mov r1 2
+mov r5 result
+syscall
+
+mov r2 inputOne
+mov r3 inputTwo
+sub
+mov result r2
+
+mov r1 2
+mov r5 subbedMsg
+syscall
+
+mov r1 2
+mov r5 result
+syscall
+
+end
